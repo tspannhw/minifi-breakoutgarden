@@ -1,0 +1,238 @@
+MiNiFi Config Version: 3
+Flow Controller:
+  name: MiniFi Garden
+  comment: ''
+Core Properties:
+  flow controller graceful shutdown period: 10 sec
+  flow service write delay interval: 500 ms
+  administrative yield duration: 30 sec
+  bored yield duration: 10 millis
+  max concurrent threads: 1
+  variable registry properties: ''
+FlowFile Repository:
+  partitions: 256
+  checkpoint interval: 2 mins
+  always sync: false
+  Swap:
+    threshold: 20000
+    in period: 5 sec
+    in threads: 1
+    out period: 5 sec
+    out threads: 4
+Content Repository:
+  content claim max appendable size: 10 MB
+  content claim max flow files: 100
+  always sync: false
+Provenance Repository:
+  provenance rollover time: 1 min
+  implementation: org.apache.nifi.provenance.MiNiFiPersistentProvenanceRepository
+Component Status Repository:
+  buffer size: 1440
+  snapshot frequency: 1 min
+Security Properties:
+  keystore: ''
+  keystore type: ''
+  keystore password: ''
+  key password: ''
+  truststore: ''
+  truststore type: ''
+  truststore password: ''
+  ssl protocol: ''
+  Sensitive Props:
+    key:
+    algorithm: PBEWITHMD5AND256BITAES-CBC-OPENSSL
+    provider: BC
+Processors:
+- id: fe45405b-813c-39c4-0000-000000000000
+  name: EvaluateJsonPath Get Schema
+  class: org.apache.nifi.processors.standard.EvaluateJsonPath
+  max concurrent tasks: 1
+  scheduling strategy: TIMER_DRIVEN
+  scheduling period: 0 sec
+  penalization period: 30 sec
+  yield period: 1 sec
+  run duration nanos: 0
+  auto-terminated relationships list:
+  - failure
+  - unmatched
+  Properties:
+    Destination: flowfile-attribute
+    Null Value Representation: empty string
+    Path Not Found Behavior: ignore
+    Return Type: json
+    cputemp: $.cputemp
+    distance: $.VL53L1X_distance_in_mm
+    humidity: $.bme680_humidity
+    tempf: $.bme680_tempf
+- id: 3632d3fd-6bd7-34df-0000-000000000000
+  name: GetFile
+  class: org.apache.nifi.processors.standard.GetFile
+  max concurrent tasks: 1
+  scheduling strategy: TIMER_DRIVEN
+  scheduling period: 0 sec
+  penalization period: 30 sec
+  yield period: 1 sec
+  run duration nanos: 0
+  auto-terminated relationships list: []
+  Properties:
+    Batch Size: '100'
+    File Filter: '[^\.].*'
+    Ignore Hidden Files: 'false'
+    Input Directory: /opt/demo/images
+    Keep Source File: 'false'
+    Maximum File Age:
+    Maximum File Size:
+    Minimum File Age: 5 sec
+    Minimum File Size: 64 B
+    Path Filter:
+    Polling Interval: 0 sec
+    Recurse Subdirectories: 'true'
+- id: 5905c930-836a-3d89-0000-000000000000
+  name: ListenTCP
+  class: org.apache.nifi.processors.standard.ListenTCP
+  max concurrent tasks: 1
+  scheduling strategy: TIMER_DRIVEN
+  scheduling period: 0 sec
+  penalization period: 30 sec
+  yield period: 1 sec
+  run duration nanos: 0
+  auto-terminated relationships list: []
+  Properties:
+    Character Set: UTF-8
+    Client Auth: NONE
+    Local Network Interface:
+    Max Batch Size: '1'
+    Max Number of TCP Connections: '3'
+    Max Size of Message Queue: '10000'
+    Max Size of Socket Buffer: 1 MB
+    Message Delimiter: \n
+    Port: '5005'
+    Receive Buffer Size: 65507 B
+    SSL Context Service:
+- id: a923e6c3-6197-3f4d-0000-000000000000
+  name: RouteOnAttribute
+  class: org.apache.nifi.processors.standard.RouteOnAttribute
+  max concurrent tasks: 1
+  scheduling strategy: TIMER_DRIVEN
+  scheduling period: 0 sec
+  penalization period: 30 sec
+  yield period: 1 sec
+  run duration nanos: 0
+  auto-terminated relationships list:
+  - unmatched
+  Properties:
+    Routing Strategy: Route to Property name
+    highcputemp: ${cputemp:gt(100)}
+    highhumidity: ${humidity:gt(60)}
+    hightempf: ${tempf:gt(80)}
+    movement: ${distance:gt(0)}
+- id: abc0c09c-f597-32fc-0000-000000000000
+  name: UpdateAttribute
+  class: org.apache.nifi.processors.attributes.UpdateAttribute
+  max concurrent tasks: 1
+  scheduling strategy: TIMER_DRIVEN
+  scheduling period: 0 sec
+  penalization period: 30 sec
+  yield period: 1 sec
+  run duration nanos: 0
+  auto-terminated relationships list: []
+  Properties:
+    Content-Type: application/json
+    Delete Attributes Expression:
+    Stateful Variables Initial Value:
+    Store State: Do not store state
+    content.type: application/json
+    mime-type: application/json
+    mime.type: application/json
+    schema: garden
+    schema.name: garden
+Controller Services: []
+Process Groups: []
+Input Ports: []
+Output Ports: []
+Funnels: []
+Connections:
+- id: 12c8e230-675f-3456-0000-000000000000
+  name: EvaluateJsonPath Get Schema/matched/RouteOnAttribute
+  source id: fe45405b-813c-39c4-0000-000000000000
+  source relationship names:
+  - matched
+  destination id: a923e6c3-6197-3f4d-0000-000000000000
+  max work queue size: 120000
+  max work queue data size: 1 GB
+  flowfile expiration: 0 sec
+  queue prioritizer class: ''
+- id: 142296df-8d26-318f-0000-000000000000
+  name: GetFile/success/c93d5d44-0167-1000-dbab-290ce8a55963
+  source id: 3632d3fd-6bd7-34df-0000-000000000000
+  source relationship names:
+  - success
+  destination id: c93d5d44-0167-1000-dbab-290ce8a55963
+  max work queue size: 120000
+  max work queue data size: 1 GB
+  flowfile expiration: 0 sec
+  queue prioritizer class: ''
+- id: e9f54b35-c617-3beb-0000-000000000000
+  name: ListenTCP/success/UpdateAttribute
+  source id: 5905c930-836a-3d89-0000-000000000000
+  source relationship names:
+  - success
+  destination id: abc0c09c-f597-32fc-0000-000000000000
+  max work queue size: 120000
+  max work queue data size: 1 GB
+  flowfile expiration: 0 sec
+  queue prioritizer class: ''
+- id: b3e81ab1-41a3-3f0c-0000-000000000000
+  name: RouteOnAttribute/highcputemp/c93d5d44-0167-1000-dbab-290ce8a55963
+  source id: a923e6c3-6197-3f4d-0000-000000000000
+  source relationship names:
+  - highcputemp
+  - highhumidity
+  - hightempf
+  - movement
+  destination id: c93d5d44-0167-1000-dbab-290ce8a55963
+  max work queue size: 120000
+  max work queue data size: 1 GB
+  flowfile expiration: 0 sec
+  queue prioritizer class: ''
+- id: 5f794b74-3c0c-3df3-0000-000000000000
+  name: UpdateAttribute/success/EvaluateJsonPath Get Schema
+  source id: abc0c09c-f597-32fc-0000-000000000000
+  source relationship names:
+  - success
+  destination id: fe45405b-813c-39c4-0000-000000000000
+  max work queue size: 120000
+  max work queue data size: 1 GB
+  flowfile expiration: 0 sec
+  queue prioritizer class: ''
+Remote Process Groups:
+- id: 0bdef16e-2884-348c-0000-000000000000
+  name: ''
+  url: http://hw13125.local:8080/nifi/
+  comment: ''
+  timeout: 60 sec
+  yield period: 10 sec
+  transport protocol: HTTP
+  proxy host: ''
+  proxy port: ''
+  proxy user: ''
+  proxy password: ''
+  local network interface: ''
+  Input Ports:
+  - id: c93d5d44-0167-1000-dbab-290ce8a55963
+    name: Garden Input
+    comment: ''
+    max concurrent tasks: 1
+    use compression: false
+  - id: 0458c4ee-8778-35d7-84e9-f5d15088c7e7
+    name: Movidius Input
+    comment: ''
+    max concurrent tasks: 1
+    use compression: false
+  - id: 9aa02238-d743-37b1-eaf8-6e7676b1b859
+    name: MiniFi Rainbow
+    comment: ''
+    max concurrent tasks: 1
+    use compression: false
+  Output Ports: []
+NiFi Properties Overrides: {}

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.2">
+    <description></description>
+    <groupId>c9194ee4-0167-1000-349f-3b0e2b34c507</groupId>
+    <name>NiFi Garden Router</name>
+    <snippet>
+        <connections>
+            <id>33b831b7-5c7c-3a21-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <versionedComponentId>33b831b7-5c7c-3a21-9a9c-1acdd95e7aaa</versionedComponentId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>120000</backPressureObjectThreshold>
+            <destination>
+                <groupId>7c7e6fd5-3408-3192-0000-000000000000</groupId>
+                <id>98936625-602d-35d7-0000-000000000000</id>
+                <type>PROCESSOR</type>
+                <versionedComponentId>98936625-602d-35d7-a8c4-05f72c758a18</versionedComponentId>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>unmatched</selectedRelationships>
+            <source>
+                <groupId>7c7e6fd5-3408-3192-0000-000000000000</groupId>
+                <id>939f59e1-e03b-39d2-0000-000000000000</id>
+                <type>PROCESSOR</type>
+                <versionedComponentId>939f59e1-e03b-39d2-a791-628fd46523bd</versionedComponentId>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>9b55d3bb-cc8e-3214-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <versionedComponentId>9b55d3bb-cc8e-3214-a243-f81b09843132</versionedComponentId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>120000</backPressureObjectThreshold>
+            <destination>
+                <groupId>7c7e6fd5-3408-3192-0000-000000000000</groupId>
+                <id>939f59e1-e03b-39d2-0000-000000000000</id>
+                <type>PROCESSOR</type>
+                <versionedComponentId>939f59e1-e03b-39d2-a791-628fd46523bd</versionedComponentId>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <source>
+                <groupId>7c7e6fd5-3408-3192-0000-000000000000</groupId>
+                <id>c9b8c487-8f7d-36c4-0000-000000000000</id>
+                <type>INPUT_PORT</type>
+                <versionedComponentId>c9b8c487-8f7d-36c4-a5d4-d9243b1e3913</versionedComponentId>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>bfa4ec9c-904e-3c1c-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <versionedComponentId>bfa4ec9c-904e-3c1c-a5e6-b015f3d87821</versionedComponentId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>120000</backPressureObjectThreshold>
+            <destination>
+                <groupId>d773e0c3-cd2b-37c7-0000-000000000000</groupId>
+                <id>e873081f-3377-3b6f-bfb9-029f9bf31c19</id>
+                <type>REMOTE_INPUT_PORT</type>
+                <versionedComponentId>387846cc-18b9-3d38-b185-928eba76a49e</versionedComponentId>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>7c7e6fd5-3408-3192-0000-000000000000</groupId>
+                <id>98936625-602d-35d7-0000-000000000000</id>
+                <type>PROCESSOR</type>
+                <versionedComponentId>98936625-602d-35d7-a8c4-05f72c758a18</versionedComponentId>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>cb16d6c2-87cf-3683-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <versionedComponentId>cb16d6c2-87cf-3683-8d0d-a8f80e699360</versionedComponentId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>120000</backPressureObjectThreshold>
+            <destination>
+                <groupId>d773e0c3-cd2b-37c7-0000-000000000000</groupId>
+                <id>0feb2706-c5e7-31bf-9f4d-3df9bebcdea0</id>
+                <type>REMOTE_INPUT_PORT</type>
+                <versionedComponentId>47f75ddd-ed7e-335c-a08c-e4e6bd4799dc</versionedComponentId>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>isImage</selectedRelationships>
+            <source>
+                <groupId>7c7e6fd5-3408-3192-0000-000000000000</groupId>
+                <id>939f59e1-e03b-39d2-0000-000000000000</id>
+                <type>PROCESSOR</type>
+                <versionedComponentId>939f59e1-e03b-39d2-a791-628fd46523bd</versionedComponentId>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <inputPorts>
+            <id>c9b8c487-8f7d-36c4-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <position>
+                <x>62.26005310058588</x>
+                <y>0.0</y>
+            </position>
+            <versionedComponentId>c9b8c487-8f7d-36c4-a5d4-d9243b1e3913</versionedComponentId>
+            <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+            <name>Garden Input</name>
+            <state>RUNNING</state>
+            <type>INPUT_PORT</type>
+        </inputPorts>
+        <processors>
+            <id>939f59e1-e03b-39d2-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <position>
+                <x>21.000034179687532</x>
+                <y>131.60337200164793</y>
+            </position>
+            <versionedComponentId>939f59e1-e03b-39d2-a791-628fd46523bd</versionedComponentId>
+            <bundle>
+                <artifact>nifi-standard-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.8.0</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Routing Strategy</key>
+                        <value>
+                            <name>Routing Strategy</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>isImage</key>
+                        <value>
+                            <name>isImage</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Routing Strategy</key>
+                        <value>Route to Property name</value>
+                    </entry>
+                    <entry>
+                        <key>isImage</key>
+                        <value>${filename:contains('jpg')}</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>RouteOnAttribute</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>isImage</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>unmatched</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.processors.standard.RouteOnAttribute</type>
+        </processors>
+        <processors>
+            <id>98936625-602d-35d7-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <position>
+                <x>501.23999084472655</x>
+                <y>364.4034147262573</y>
+            </position>
+            <versionedComponentId>98936625-602d-35d7-a8c4-05f72c758a18</versionedComponentId>
+            <bundle>
+                <artifact>nifi-update-attribute-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.8.0</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Delete Attributes Expression</key>
+                        <value>
+                            <name>Delete Attributes Expression</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Store State</key>
+                        <value>
+                            <name>Store State</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Stateful Variables Initial Value</key>
+                        <value>
+                            <name>Stateful Variables Initial Value</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Delete Attributes Expression</key>
+                    </entry>
+                    <entry>
+                        <key>Store State</key>
+                        <value>Do not store state</value>
+                    </entry>
+                    <entry>
+                        <key>Stateful Variables Initial Value</key>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>UpdateAttribute</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.processors.attributes.UpdateAttribute</type>
+        </processors>
+        <remoteProcessGroups>
+            <id>d773e0c3-cd2b-37c7-0000-000000000000</id>
+            <parentGroupId>7c7e6fd5-3408-3192-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>638.4844523239137</y>
+            </position>
+            <versionedComponentId>d773e0c3-cd2b-37c7-b15a-83f810ec292a</versionedComponentId>
+            <comments></comments>
+            <communicationsTimeout>30 sec</communicationsTimeout>
+            <contents>
+                <inputPorts>
+                    <batchSettings/>
+                    <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                    <connected>true</connected>
+                    <exists>true</exists>
+                    <groupId>cc6c7ad4-0167-1000-1ebf-1401e7c14edc</groupId>
+                    <id>e873081f-3377-3b6f-bfb9-029f9bf31c19</id>
+                    <name>Garden</name>
+                    <targetId>cc645538-0167-1000-0000-000064a12fde</targetId>
+                    <targetRunning>true</targetRunning>
+                    <transmitting>true</transmitting>
+                    <useCompression>false</useCompression>
+                    <versionedComponentId>387846cc-18b9-3d38-b185-928eba76a49e</versionedComponentId>
+                </inputPorts>
+                <inputPorts>
+                    <batchSettings/>
+                    <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                    <connected>true</connected>
+                    <exists>true</exists>
+                    <groupId>cc6c7ad4-0167-1000-1ebf-1401e7c14edc</groupId>
+                    <id>0feb2706-c5e7-31bf-9f4d-3df9bebcdea0</id>
+                    <name>Garden Images</name>
+                    <targetId>cc6d2ff7-0167-1000-0000-000021aa211b</targetId>
+                    <targetRunning>true</targetRunning>
+                    <transmitting>true</transmitting>
+                    <useCompression>false</useCompression>
+                    <versionedComponentId>47f75ddd-ed7e-335c-a08c-e4e6bd4799dc</versionedComponentId>
+                </inputPorts>
+            </contents>
+            <proxyHost></proxyHost>
+            <proxyUser></proxyUser>
+            <targetUri>http://princeton0.field.hortonworks.com:9090/nifi</targetUri>
+            <targetUris>http://princeton0.field.hortonworks.com:9090/nifi</targetUris>
+            <transportProtocol>HTTP</transportProtocol>
+            <yieldDuration>10 sec</yieldDuration>
+        </remoteProcessGroups>
+    </snippet>
+    <timestamp>12/20/2018 11:25:53 EST</timestamp>
+</template>

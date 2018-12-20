@@ -1,0 +1,105 @@
+{
+  "type" : "record",
+  "name" : "garden",
+  "fields" : [ {
+    "name" : "systemtime",
+    "type" : "string",
+    "doc" : "Type inferred from '\"12/19/2018 20:33:42\"'"
+  }, {
+    "name" : "BH1745_green",
+    "type" : "string",
+    "doc" : "Type inferred from '\"20.0\"'"
+  }, {
+    "name" : "ltr559_prox",
+    "type" : "string",
+    "doc" : "Type inferred from '\"0002\"'"
+  }, {
+    "name" : "end",
+    "type" : "string",
+    "doc" : "Type inferred from '\"1545269622.36\"'"
+  }, {
+    "name" : "uuid",
+    "type" : "string",
+    "doc" : "Type inferred from '\"20181220013342_3b954379-b308-42d3-98b4-ef3d86f215d7\"'"
+  }, {
+    "name" : "lsm303d_accelerometer",
+    "type" : "string",
+    "doc" : "Type inferred from '\"+00.05g : -01.01g : +00.03g\"'"
+  }, {
+    "name" : "imgnamep",
+    "type" : "string",
+    "doc" : "Type inferred from '\"images/bog_image_p_20181220013342_3b954379-b308-42d3-98b4-ef3d86f215d7.jpg\"'"
+  }, {
+    "name" : "cputemp",
+    "type" : "double",
+    "doc" : "Type inferred from '45.0'"
+  }, {
+    "name" : "BH1745_blue",
+    "type" : "string",
+    "doc" : "Type inferred from '\"21.6\"'"
+  }, {
+    "name" : "te",
+    "type" : "string",
+    "doc" : "Type inferred from '\"9.77740502357\"'"
+  }, {
+    "name" : "bme680_tempc",
+    "type" : "string",
+    "doc" : "Type inferred from '\"27.75\"'"
+  }, {
+    "name" : "imgname",
+    "type" : "string",
+    "doc" : "Type inferred from '\"images/bog_image_20181220013342_3b954379-b308-42d3-98b4-ef3d86f215d7.jpg\"'"
+  }, {
+    "name" : "bme680_tempf",
+    "type" : "string",
+    "doc" : "Type inferred from '\"81.95\"'"
+  }, {
+    "name" : "ltr559_lux",
+    "type" : "string",
+    "doc" : "Type inferred from '\"000.00\"'"
+  }, {
+    "name" : "memory",
+    "type" : "double",
+    "doc" : "Type inferred from '11.9'"
+  }, {
+    "name" : "VL53L1X_distance_in_mm",
+    "type" : "int",
+    "doc" : "Type inferred from '0'"
+  }, {
+    "name" : "bme680_humidity",
+    "type" : "string",
+    "doc" : "Type inferred from '\"25.874\"'"
+  }, {
+    "name" : "host",
+    "type" : "string",
+    "doc" : "Type inferred from '\"vid5\"'"
+  }, {
+    "name" : "diskusage",
+    "type" : "string",
+    "doc" : "Type inferred from '\"8781.0\"'"
+  }, {
+    "name" : "ipaddress",
+    "type" : "string",
+    "doc" : "Type inferred from '\"192.168.1.167\"'"
+  }, {
+    "name" : "bme680_pressure",
+    "type" : "string",
+    "doc" : "Type inferred from '\"1016.94\"'"
+  }, {
+    "name" : "BH1745_clear",
+    "type" : "string",
+    "doc" : "Type inferred from '\"90.0\"'"
+  }, {
+    "name" : "BH1745_red",
+    "type" : "string",
+    "doc" : "Type inferred from '\"0.0\"'"
+  }, {
+    "name" : "lsm303d_magnetometer",
+    "type" : "string",
+    "doc" : "Type inferred from '\"-00.21 : +00.33 : +00.14\"'"
+  }, {
+    "name" : "starttime",
+    "type" : "string",
+    "doc" : "Type inferred from '\"12/19/2018 20:33:32\"'"
+  } ]
+}

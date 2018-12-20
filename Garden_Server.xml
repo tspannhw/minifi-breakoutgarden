@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.2">
+    <description></description>
+    <groupId>94d19823-0163-1000-97c6-e7c5579e4a0c</groupId>
+    <name>Garden Server</name>
+    <snippet>
+        <connections>
+            <id>4c23ec04-1313-3009-0000-000000000000</id>
+            <parentGroupId>658c4892-0847-36a6-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>f86439d7-3d0c-385c-0000-000000000000</groupId>
+                <id>a9b29f86-be2b-3d60-0000-000000000000</id>
+                <type>INPUT_PORT</type>
+                <versionedComponentId>a9b29f86-be2b-3d60-b681-cce1e324bb2f</versionedComponentId>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <source>
+                <groupId>658c4892-0847-36a6-0000-000000000000</groupId>
+                <id>33b96945-7f4b-3b6a-0000-000000000000</id>
+                <type>INPUT_PORT</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>7eb6c3b5-bc67-3ef9-0000-000000000000</id>
+            <parentGroupId>658c4892-0847-36a6-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>f86439d7-3d0c-385c-0000-000000000000</groupId>
+                <id>3bebafb7-8780-3d09-0000-000000000000</id>
+                <type>INPUT_PORT</type>
+                <versionedComponentId>3bebafb7-8780-3d09-ba90-000bc5a1151d</versionedComponentId>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <source>
+                <groupId>658c4892-0847-36a6-0000-000000000000</groupId>
+                <id>72c8a1cc-60f7-385b-0000-000000000000</id>
+                <type>INPUT_PORT</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <inputPorts>
+            <id>33b96945-7f4b-3b6a-0000-000000000000</id>
+            <parentGroupId>658c4892-0847-36a6-0000-000000000000</parentGroupId>
+            <position>
+                <x>393.0</x>
+                <y>1.0</y>
+            </position>
+            <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+            <name>Garden Images</name>
+            <state>RUNNING</state>
+            <transmitting>false</transmitting>
+            <type>INPUT_PORT</type>
+        </inputPorts>
+        <inputPorts>
+            <id>72c8a1cc-60f7-385b-0000-000000000000</id>
+            <parentGroupId>658c4892-0847-36a6-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>0.0</y>
+            </position>
+            <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+            <name>Garden</name>
+            <state>RUNNING</state>
+            <transmitting>false</transmitting>
+            <type>INPUT_PORT</type>
+        </inputPorts>
+        <processGroups>
+            <id>f86439d7-3d0c-385c-0000-000000000000</id>
+            <parentGroupId>658c4892-0847-36a6-0000-000000000000</parentGroupId>
+            <position>
+                <x>70.0</x>
+                <y>184.0</y>
+            </position>
+            <versionedComponentId>f86439d7-3d0c-385c-8124-0c3cefca2d0a</versionedComponentId>
+            <comments></comments>
+            <contents>
+                <connections>
+                    <id>01517dbd-464b-345a-0000-000000000000</id>
+                    <parentGroupId>f86439d7-3d0c-385c-0000-000000000000</parentGroupId>
+                    <versionedComponentId>01517dbd-464b-345a-b300-b7ad064f85cf</versionedComponentId>
+                    <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+                    <backPressureObjectThreshold>50000</backPressureObjectThreshold>
+                    <destination>
+                        <groupId>f86439d7-3d0c-385c-0000-000000000000</groupId>
+                        <id>7a7c3549-1dde-3739-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                        <versionedComponentId>7a7c3549-1dde-3739-ba0a-3e96241e273e</versionedComponentId>
+                    </destination>
+                    <flowFileExpiration>0 sec</flowFileExpiration>
+                    <labelIndex>1</labelIndex>
+                    <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+                    <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+                    <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+                    <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+                    <name></name>
+                    <source>
+                        <groupId>f86439d7-3d0c-385c-0000-000000000000</groupId>
+                        <id>3bebafb7-8780-3d09-0000-000000000000</id>
+                        <type>INPUT_PORT</type>
+                        <versionedComponentId>3bebafb7-8780-3d09-ba90-000bc5a1151d</versionedComponentId>
+                    </source>
+                    <zIndex>0</zIndex>
+                </connections>
+                <connections>
+                    <id>72be3b02-a438-32c9-0000-000000000000</id>
+                    <parentGroupId>f86439d7-3d0c-385c-0000-000000000000</parentGroupId>
+                    <versionedComponentId>72be3b02-a438-32c9-bb28-3dd5884bef41</versionedComponentId>
+                    <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+                    <backPressureObjectThreshold>50000</backPressureObjectThreshold>
+                    <destination>
+                        <groupId>f86439d7-3d0c-385c-0000-000000000000</groupId>
+                        <id>327e1e2d-9bec-3eaf-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                        <versionedComponentId>327e1e2d-9bec-3eaf-9cdc-a0872efe86e2</versionedComponentId>
+                    </destination>
+                    <flowFileExpiration>0 sec</flowFileExpiration>
+                    <labelIndex>1</labelIndex>
+                    <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+                    <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+                    <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+                    <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+                    <name></name>
+                    <source>
+                        <groupId>f86439d7-3d0c-385c-0000-000000000000</groupId>
+                        <id>a9b29f86-be2b-3d60-0000-000000000000</id>
+                        <type>INPUT_PORT</type>
+                        <versionedComponentId>a9b29f86-be2b-3d60-b681-cce1e324bb2f</versionedComponentId>
+                    </source>
+                    <zIndex>0</zIndex>
+                </connections>
+                <inputPorts>
+                    <id>3bebafb7-8780-3d09-0000-000000000000</id>
+                    <parentGroupId>f86439d7-3d0c-385c-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>391.0</x>
+                        <y>4.0</y>
+                    </position>
+                    <versionedComponentId>3bebafb7-8780-3d09-ba90-000bc5a1151d</versionedComponentId>
+                    <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                    <name>Garden Input</name>
+                    <state>RUNNING</state>
+                    <type>INPUT_PORT</type>
+                </inputPorts>
+                <inputPorts>
+                    <id>a9b29f86-be2b-3d60-0000-000000000000</id>
+                    <parentGroupId>f86439d7-3d0c-385c-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>761.0</x>
+                        <y>-4.0</y>
+                    </position>
+                    <versionedComponentId>a9b29f86-be2b-3d60-b681-cce1e324bb2f</versionedComponentId>
+                    <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                    <name>Garden Image</name>
+                    <state>RUNNING</state>
+                    <type>INPUT_PORT</type>
+                </inputPorts>
+                <processors>
+                    <id>327e1e2d-9bec-3eaf-0000-000000000000</id>
+                    <parentGroupId>f86439d7-3d0c-385c-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>726.0</x>
+                        <y>131.0</y>
+                    </position>
+                    <versionedComponentId>327e1e2d-9bec-3eaf-9cdc-a0872efe86e2</versionedComponentId>
+                    <bundle>
+                        <artifact>nifi-update-attribute-nar</artifact>
+                        <group>org.apache.nifi</group>
+                        <version>1.8.0.3.3.0.0-165</version>
+                    </bundle>
+                    <config>
+                        <bulletinLevel>WARN</bulletinLevel>
+                        <comments></comments>
+                        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                        <descriptors>
+                            <entry>
+<key>Delete Attributes Expression</key>
+<value>
+    <name>Delete Attributes Expression</name>
+</value>
+                            </entry>
+                            <entry>
+<key>Store State</key>
+<value>
+    <name>Store State</name>
+</value>
+                            </entry>
+                            <entry>
+<key>Stateful Variables Initial Value</key>
+<value>
+    <name>Stateful Variables Initial Value</name>
+</value>
+                            </entry>
+                        </descriptors>
+                        <executionNode>ALL</executionNode>
+                        <lossTolerant>false</lossTolerant>
+                        <penaltyDuration>30 sec</penaltyDuration>
+                        <properties>
+                            <entry>
+<key>Delete Attributes Expression</key>
+                            </entry>
+                            <entry>
+<key>Store State</key>
+<value>Do not store state</value>
+                            </entry>
+                            <entry>
+<key>Stateful Variables Initial Value</key>
+                            </entry>
+                        </properties>
+                        <runDurationMillis>0</runDurationMillis>
+                        <schedulingPeriod>0 sec</schedulingPeriod>
+                        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                        <yieldDuration>1 sec</yieldDuration>
+                    </config>
+                    <executionNodeRestricted>false</executionNodeRestricted>
+                    <name>UpdateAttribute</name>
+                    <relationships>
+                        <autoTerminate>false</autoTerminate>
+                        <name>success</name>
+                    </relationships>
+                    <state>STOPPED</state>
+                    <style/>
+                    <type>org.apache.nifi.processors.attributes.UpdateAttribute</type>
+                </processors>
+                <processors>
+                    <id>7a7c3549-1dde-3739-0000-000000000000</id>
+                    <parentGroupId>f86439d7-3d0c-385c-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>337.0</x>
+                        <y>127.0</y>
+                    </position>
+                    <versionedComponentId>7a7c3549-1dde-3739-ba0a-3e96241e273e</versionedComponentId>
+                    <bundle>
+                        <artifact>nifi-update-attribute-nar</artifact>
+                        <group>org.apache.nifi</group>
+                        <version>1.8.0.3.3.0.0-165</version>
+                    </bundle>
+                    <config>
+                        <bulletinLevel>WARN</bulletinLevel>
+                        <comments></comments>
+                        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                        <descriptors>
+                            <entry>
+<key>Delete Attributes Expression</key>
+<value>
+    <name>Delete Attributes Expression</name>
+</value>
+                            </entry>
+                            <entry>
+<key>Store State</key>
+<value>
+    <name>Store State</name>
+</value>
+                            </entry>
+                            <entry>
+<key>Stateful Variables Initial Value</key>
+<value>
+    <name>Stateful Variables Initial Value</name>
+</value>
+                            </entry>
+                        </descriptors>
+                        <executionNode>ALL</executionNode>
+                        <lossTolerant>false</lossTolerant>
+                        <penaltyDuration>30 sec</penaltyDuration>
+                        <properties>
+                            <entry>
+<key>Delete Attributes Expression</key>
+                            </entry>
+                            <entry>
+<key>Store State</key>
+<value>Do not store state</value>
+                            </entry>
+                            <entry>
+<key>Stateful Variables Initial Value</key>
+                            </entry>
+                        </properties>
+                        <runDurationMillis>0</runDurationMillis>
+                        <schedulingPeriod>0 sec</schedulingPeriod>
+                        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                        <yieldDuration>1 sec</yieldDuration>
+                    </config>
+                    <executionNodeRestricted>false</executionNodeRestricted>
+                    <name>UpdateAttribute</name>
+                    <relationships>
+                        <autoTerminate>false</autoTerminate>
+                        <name>success</name>
+                    </relationships>
+                    <state>STOPPED</state>
+                    <style/>
+                    <type>org.apache.nifi.processors.attributes.UpdateAttribute</type>
+                </processors>
+            </contents>
+            <name>Garden Processing</name>
+            <variables/>
+        </processGroups>
+    </snippet>
+    <timestamp>12/20/2018 17:41:12 UTC</timestamp>
+</template>
