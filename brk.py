@@ -29,6 +29,8 @@ import ltr559
 import bme680
 from lsm303d import LSM303D
 
+# TODO:  continuous loop, send status message to screen
+
 def do_nothing(obj):
     pass
     
@@ -36,11 +38,11 @@ def send_tcp(ipaddress, message):
 	try:
 	    TCP_PORT = 5005  # define somewhere
 	    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	    s.connect((TCP_IP, TCP_PORT))
+	    s.connect((ipaddress, TCP_PORT))
 	    s.sendall(message)
 	    s.close()
 	except:
-     print("{\"message\": \"Failed to send message\"}")
+     print("Failed to send message")
 
 def IP_address():
         try:
@@ -71,6 +73,9 @@ oled.cleanup = do_nothing
 MAX_DISTANCE_MM = 800 # Distance at which our bar is full
 TRIGGER_DISTANCE_MM = 80
 
+# Ip address
+ipaddress = IP_address()
+
 # options
 # 1 - read each sensor once per full call
 # 2 - have app stream sensor values to MiniFi via File, TCP, MQTT, REST
@@ -79,7 +84,6 @@ TRIGGER_DISTANCE_MM = 80
 bh1745 = BH1745()
 bh1745.setup()
 bh1745.set_leds(1)
-
 r, g, b, c = bh1745.get_rgbc_raw()
 bh1745.set_leds(0)
 
@@ -117,19 +121,29 @@ lsm3accl = lsm.accelerometer()
 lsm3mag = lsm.magnetometer()
     
 # start camera
+time.sleep(0.5)
 cap = cv2.VideoCapture(0)  
 time.sleep(3)
-ret, frame = cap.read()
-uuid = '{0}_{1}'.format(strftime("%Y%m%d%H%M%S",gmtime()),uuid.uuid4())
-filename = 'images/bog_image_{0}.jpg'.format(uuid)
-filename2 = 'images/bog_image_p_{0}.jpg'.format(uuid)
-cv2.imwrite(filename, frame)
 
-cpuTemp=int(float(getCPUtemperature()))
-ipaddress = IP_address()
-row = { }
-     
-try:
+# loop forever
+#try:
+while True:
+     row = { }
+     distance_in_mm = tof.get_distance() # Grab the range in mm
+	 distance_in_mm = min(MAX_DISTANCE_MM, distance_in_mm) # Cap at our MAX_DISTANCE
+	 lsm3accl = lsm.accelerometer()
+     lsm3mag = lsm.magnetometer()
+     lux = ltr559.get_lux()
+     prox = ltr559.get_proximity()
+     bh1745.set_leds(1)
+     r, g, b, c = bh1745.get_rgbc_raw()
+     bh1745.set_leds(0)
+     ret, frame = cap.read()
+     uuid2 = '{0}_{1}'.format(strftime("%Y%m%d%H%M%S",gmtime()),uuid.uuid4())
+     filename = 'images/bog_image_{0}.jpg'.format(uuid2)
+     filename2 = 'images/bog_image_p_{0}.jpg'.format(uuid2)
+     cv2.imwrite(filename, frame)
+     cpuTemp=int(float(getCPUtemperature()))
      end = time.time()
      row['imgname'] = filename
      row['imgnamep'] = filename2
@@ -156,15 +170,12 @@ try:
      usage = psutil.disk_usage("/")
      row['diskusage'] = "{:.1f}".format(float(usage.free) / 1024 / 1024)
      row['memory'] = psutil.virtual_memory().percent
-     row['uuid'] = str(uuid)
+     row['uuid'] = str(uuid2)
      json_string = json.dumps(row)  
-     print (json_string)
      json_string += str("\n")
      send_tcp(ipaddress, json_string)
-except:
-     print("{\"message\": \"Failed to run\"}")
-          
-with canvas(oled) as draw:
+     json_string = ""
+     with canvas(oled) as draw:
          draw.rectangle(oled.bounding_box, outline="white", fill="black")
          draw.text((0, 0), "- Apache NiFi MiniFi -", fill="white")
          draw.text((0, 10), ipaddress, fill="white")
@@ -178,5 +189,6 @@ with canvas(oled) as draw:
          draw.text((0, 90), 'A: {}'.format(row['lsm303d_accelerometer']), fill="white") 
          draw.text((0, 100), 'M: {}'.format(row['lsm303d_magnetometer']), fill="white") 
          draw.text((0, 110), 'DU: {}'.format(row['diskusage']), fill="white") 
-         time.sleep(0.05)
-
+         time.sleep(0.5)
+#except:
+#     print("Fail to send.")        
