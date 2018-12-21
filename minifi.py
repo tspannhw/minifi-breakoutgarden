@@ -33,15 +33,11 @@ from lsm303d import LSM303D
 
 def do_nothing(obj):
     pass
-    
-def send_tcp(ipaddress, message):
-	try:
-	    TCP_PORT = 5005  # define somewhere
-	    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	    s.connect((ipaddress, TCP_PORT))
-	    s.sendall(message)
-	    s.close()
-	except:
+
+def send_tcp(s, message):
+    try:
+        s.sendall(message)
+    except:
      print("Failed to send message")
 
 def IP_address():
@@ -58,8 +54,8 @@ def getCPUtemperature():
     res = os.popen('vcgencmd measure_temp').readline()
     return(res.replace("temp=","").replace("'C\n",""))
 
-# - start timing                
-starttime = datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S') 
+# - start timing
+starttime = datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')
 start = time.time()
 
 external_IP_and_port = ('198.41.0.4', 53)  # a.root-servers.net
@@ -94,11 +90,11 @@ tof.start_ranging(2) # Start ranging, 1 = Short Range, 2 = Medium Range, 3 = Lon
 tof.stop_ranging() # Stop ranging
 distance_in_mm = tof.get_distance() # Grab the range in mm
 distance_in_mm = min(MAX_DISTANCE_MM, distance_in_mm) # Cap at our MAX_DISTANCE
-    
+
 # ltr559
 lux = ltr559.get_lux()
 prox = ltr559.get_proximity()
-        
+
 # bme680
 try:
     sensor = bme680.BME680(bme680.I2C_ADDR_PRIMARY)
@@ -114,24 +110,28 @@ sensor.set_gas_status(bme680.ENABLE_GAS_MEAS)
 sensor.set_gas_heater_temperature(320)
 sensor.set_gas_heater_duration(150)
 sensor.select_gas_heater_profile(0)
-            
+
 # lsm303d
 lsm = LSM303D(0x1d)
 lsm3accl = lsm.accelerometer()
 lsm3mag = lsm.magnetometer()
-    
+
+TCP_PORT = 5005  # define somewhere
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((ipaddress, TCP_PORT))
+
 # start camera
 time.sleep(0.5)
-cap = cv2.VideoCapture(0)  
+cap = cv2.VideoCapture(0)
 time.sleep(3)
 
 # loop forever
-#try:
-while True:
+try:
+  while True:
      row = { }
      distance_in_mm = tof.get_distance() # Grab the range in mm
-	 distance_in_mm = min(MAX_DISTANCE_MM, distance_in_mm) # Cap at our MAX_DISTANCE
-	 lsm3accl = lsm.accelerometer()
+     distance_in_mm = min(MAX_DISTANCE_MM, distance_in_mm) # Cap at our MAX_DISTANCE
+     lsm3accl = lsm.accelerometer()
      lsm3mag = lsm.magnetometer()
      lux = ltr559.get_lux()
      prox = ltr559.get_proximity()
@@ -164,16 +164,16 @@ while True:
      row['bme680_pressure'] = '{0:.2f}'.format(sensor.data.pressure)
      row['bme680_humidity'] = '{0:.3f}'.format(sensor.data.humidity)
      row['lsm303d_accelerometer'] = "{:+06.2f}g : {:+06.2f}g : {:+06.2f}g".format(*lsm3accl)
-     row['lsm303d_magnetometer'] = "{:+06.2f} : {:+06.2f} : {:+06.2f}".format(*lsm3mag)           
-     row['systemtime'] = datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')      
-     row['starttime'] = starttime  
+     row['lsm303d_magnetometer'] = "{:+06.2f} : {:+06.2f} : {:+06.2f}".format(*lsm3mag)
+     row['systemtime'] = datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')
+     row['starttime'] = starttime
      usage = psutil.disk_usage("/")
      row['diskusage'] = "{:.1f}".format(float(usage.free) / 1024 / 1024)
      row['memory'] = psutil.virtual_memory().percent
      row['uuid'] = str(uuid2)
-     json_string = json.dumps(row)  
+     json_string = json.dumps(row)
      json_string += str("\n")
-     send_tcp(ipaddress, json_string)
+     send_tcp(s,json_string)
      json_string = ""
      with canvas(oled) as draw:
          draw.rectangle(oled.bounding_box, outline="white", fill="black")
@@ -181,14 +181,14 @@ while True:
          draw.text((0, 10), ipaddress, fill="white")
          draw.text((0, 20), starttime, fill="white")
          draw.text((0, 30), 'Temp: {}'.format( sensor.data.temperature ), fill="white")
-         draw.text((0, 40), 'Humidity: {}'.format( sensor.data.humidity ), fill="white")  
-         draw.text((0, 50), 'Pressure: {}'.format( sensor.data.pressure ), fill="white")    
-         draw.text((0, 60), 'Distance: {}'.format(str(distance_in_mm)), fill="white")      
-         draw.text((0, 70), 'CPUTemp: {}'.format( cpuTemp ), fill="white")      
-         draw.text((0, 80), 'TempF: {}'.format( row['bme680_tempf'] ), fill="white") 
-         draw.text((0, 90), 'A: {}'.format(row['lsm303d_accelerometer']), fill="white") 
-         draw.text((0, 100), 'M: {}'.format(row['lsm303d_magnetometer']), fill="white") 
-         draw.text((0, 110), 'DU: {}'.format(row['diskusage']), fill="white") 
+         draw.text((0, 40), 'Humidity: {}'.format( sensor.data.humidity ), fill="white")
+         draw.text((0, 50), 'Pressure: {}'.format( sensor.data.pressure ), fill="white")
+         draw.text((0, 60), 'Distance: {}'.format(str(distance_in_mm)), fill="white")
+         draw.text((0, 70), 'CPUTemp: {}'.format( cpuTemp ), fill="white")
+         draw.text((0, 80), 'TempF: {}'.format( row['bme680_tempf'] ), fill="white")
+         draw.text((0, 90), 'A: {}'.format(row['lsm303d_accelerometer']), fill="white")
+         draw.text((0, 100), 'M: {}'.format(row['lsm303d_magnetometer']), fill="white")
+         draw.text((0, 110), 'DU: {}'.format(row['diskusage']), fill="white")
          time.sleep(0.5)
-#except:
-#     print("Fail to send.")        
+except:
+     print("Fail to send.")
