@@ -21,3 +21,12 @@ pip install tensorflow
 
 
 ### Timothy Spann @PaasDev
+
+### TODO:   https://pypi.org/project/python-daemon/
+
+### TODO:   Memory cleanup, proper shutdown, buffers, add in tensorflow
+
+### TODO:   Server processing:   Send to kafka topics.   Kafka Streaming Microservices to process
+
+### TODO:   Run Kafka Streams Apps on YARN 3.1
+
