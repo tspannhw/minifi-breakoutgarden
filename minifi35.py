@@ -1,7 +1,6 @@
 # for Python 3.5
 # make sure you have pip3.5 install psutil
 # needs OpenCV 3.3+, Numpy, Tensorflow 1.11, Python Dev
-HW13125:install tspann$ cat minifi.py
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
