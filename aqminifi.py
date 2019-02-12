@@ -41,7 +41,7 @@ import time
 # MQTT
 import paho.mqtt.client as paho
 client = paho.Client()
-client.username_pw_set("zvrxunpj","5Ox2ZIbLor7z")
+client.username_pw_set("user","password")
 
 # yyyy-mm-dd hh:mm:ss
 currenttime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
@@ -82,7 +82,7 @@ socket_family = socket.AF_INET
 ipaddress = IP_address()
 
 # MQTT Connect
-client.connect("m13.cloudmqtt.com", 17769, 60)
+client.connect("cloud.com", 17769, 60)
 
 # --- Reuse from bme680 indoor airquality sample
 try:
